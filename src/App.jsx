@@ -1,29 +1,23 @@
 import React from 'react';
-import Home from '../components/Home.jsx';
-import Produtos from '../components/Produtos.jsx';
 
 const App = () => {
-  const { pathname } = window.location;
+  const [contar, setContar] = React.useState(1);
+  const [items, setItems] = React.useState(['Item 1']);
 
-  let Component;
-  if (pathname === '/produtos') {
-    Component = Produtos;
-  } else {
-    Component = Home;
+  function handleClick() {
+    setContar(contar + 1);
+    setItems([...items, 'Item ' + (contar + 1)]);
   }
 
   return (
-    <>
+    <div>
       <ul>
-        <li>
-          <a href={'/'}>Home</a>
-        </li>
-        <li>
-          <a href={'/produtos'}>Produtos</a>
-        </li>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
       </ul>
-      <Component />
-    </>
+      <button onClick={handleClick}>{contar}</button>
+    </div>
   );
 };
 
