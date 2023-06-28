@@ -1,38 +1,51 @@
 import React from 'react';
 
-const titulo = <h1>Esse é um título</h1>;
+// Mostre os dados da aplicação, como apresentado no vídeo
+// Não utilize CSS externo, use o style para mudar as cores
+// Se a situação estiver ativa pinte de verde, inativa vermelho
+// Se o gasto for maior que 10000 mostre uma mensagem
+const luana = {
+  cliente: 'Luana',
+  idade: 27,
+  compras: [
+    { nome: 'Notebook', preco: 'R$ 2500' },
+    { nome: 'Geladeira', preco: 'R$ 3000' },
+    { nome: 'Smartphone', preco: 'R$ 1500' },
+  ],
+  ativa: true,
+};
+
+const mario = {
+  cliente: 'Mario',
+  idade: 31,
+  compras: [
+    { nome: 'Notebook', preco: 'R$ 2500' },
+    { nome: 'Geladeira', preco: 'R$ 3000' },
+    { nome: 'Smartphone', preco: 'R$ 1500' },
+    { nome: 'Guitarra', preco: 'R$ 3500' },
+  ],
+  ativa: false,
+};
 
 const App = () => {
-  const random = Math.random();
-  const ativo = false;
+  const dados = mario;
 
-  function mostrarNome(sobrenome) {
-    return 'Augusto ' + sobrenome;
-  }
-
-  const carro = {
-    marca: 'Ford',
-    rodas: '4',
-  };
-
-  const estiloP = {
-    color: 'blue',
-    fontSize: '2rem',
-  };
+  const gasto = dados.compras.reduce((acc, compra) => {
+    return acc + Number(compra.preco.split(' ')[1]);
+  }, 0);
 
   return (
     <>
-      {titulo}
+      <p>Nome: {dados.cliente}</p>
+      <p>Idade: {dados.idade}</p>
       <p>
-        {true ? 'adas' : 'ewrtui'} - {10}
-        {mostrarNome('Rafael')}
+        Situação:{' '}
+        <span style={{ color: dados.ativa ? 'green' : 'red' }}>
+          {dados.ativa ? 'Ativa' : 'Inativa'}
+        </span>
       </p>
-      <p style={estiloP}>{new Date().getFullYear()}</p>
-      <p style={estiloP}>{carro.marca}</p>
-      <p>{carro.rodas}</p>
-      {/* Objeto inteiro não é aceito */}
-      {/* <p>{carro}</p> */}
-      <p className={ativo ? 'ativo' : 'inativo'}>{(random * 1000) / 50}</p>
+      <p>Total gasto: R$ {gasto}</p>
+      {gasto > 10000 && <p>Você está gastando muito</p>}
     </>
   );
 };
