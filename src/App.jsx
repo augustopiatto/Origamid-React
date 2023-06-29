@@ -5,11 +5,23 @@ const App = () => {
   const [produto, setProduto] = React.useState({});
   const [carregando, setCarregando] = React.useState(false);
 
-  async function fetchApi(event) {
-    setProduto({});
+  React.useEffect(() => {
+    const preferencia = window.localStorage.getItem('produto');
+    if (preferencia) {
+      fetchApi(preferencia);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (produto.nome) {
+      window.localStorage.setItem('produto', produto.nome);
+    }
+  }, [produto]);
+
+  async function fetchApi(nomeProduto) {
     setCarregando(true);
     const response = await fetch(
-      `https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`,
+      `https://ranekapi.origamid.dev/json/api/produto/${nomeProduto}`,
     );
     const responseJson = await response.json();
     setTimeout(() => {
@@ -20,15 +32,20 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={fetchApi} style={{ marginRight: '16px' }}>
+      <h1>Preferência: {produto.nome && produto.nome}</h1>
+      <button
+        onClick={() => fetchApi('notebook')}
+        style={{ marginRight: '16px' }}
+      >
         notebook
       </button>
-      <button onClick={fetchApi} style={{ marginRight: '16px' }}>
+      <button
+        onClick={() => fetchApi('smartphone')}
+        style={{ marginRight: '16px' }}
+      >
         smartphone
       </button>
-      <button onClick={fetchApi}>tablet</button>
-      {carregando && <p>Carregando...</p>}
-      {!!Object.keys(produto).length && <Produto produto={produto} />}
+      {carregando ? <p>Carregando...</p> : <Produto produto={produto} />}
     </div>
   );
 };

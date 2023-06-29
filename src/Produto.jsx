@@ -15,9 +15,13 @@ const Produto = ({ produto }) => {
     <div>
       <h1>{produto.nome}</h1>
       <p>{real(produto.preco)}</p>
-      {produto.fotos.map((foto) => (
-        <img src={foto.src} alt={foto.titulo} key={foto.src} />
-      ))}
+      {!!Object.keys(produto).length && (
+        <img
+          src={produto.fotos[0].src}
+          alt={produto.fotos[0].titulo}
+          key={produto.fotos[0].src}
+        />
+      )}
     </div>
   );
 };
