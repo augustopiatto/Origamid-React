@@ -1,6 +1,9 @@
-import Rearct from 'react';
+import React from 'react';
+import { GlobalContext } from './GlobalStorage';
 
-const Produto = ({ produto }) => {
+const Produto = () => {
+  const { cleanApi, fetchApi, produto } = React.useContext(GlobalContext);
+
   function real(value) {
     const formattingOptions = {
       style: 'currency',
@@ -13,14 +16,20 @@ const Produto = ({ produto }) => {
 
   return (
     <div>
-      <h1>{produto.nome}</h1>
-      <p>{real(produto.preco)}</p>
+      <button onClick={fetchApi} style={{ marginRight: '16px' }}>
+        Puxar API
+      </button>
+      <button onClick={cleanApi}>Limpar infos</button>
       {!!Object.keys(produto).length && (
-        <img
-          src={produto.fotos[0].src}
-          alt={produto.fotos[0].titulo}
-          key={produto.fotos[0].src}
-        />
+        <div>
+          <h1>{produto.nome}</h1>
+          <p>{real(produto.preco)}</p>
+          <img
+            src={produto.fotos[0].src}
+            alt={produto.fotos[0].titulo}
+            key={produto.fotos[0].src}
+          />
+        </div>
       )}
     </div>
   );
