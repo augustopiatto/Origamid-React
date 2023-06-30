@@ -1,8 +1,8 @@
 import React from 'react';
-import { GlobalContext } from './GlobalStorage';
+import useFetch from './useFetch.jsx';
 
 const Produto = () => {
-  const { cleanApi, fetchApi, produto } = React.useContext(GlobalContext);
+  const { request, data, setData, loading, error } = useFetch();
 
   function real(value) {
     const formattingOptions = {
@@ -14,22 +14,55 @@ const Produto = () => {
     return realString.format(value);
   }
 
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const { response, json } = await request(
+        'https://ranekapi.origamid.dev/json/api/produto/smartphone',
+        {},
+      );
+    };
+    fetchData();
+  }, [request]);
+
   return (
     <div>
-      <button onClick={fetchApi} style={{ marginRight: '16px' }}>
-        Puxar API
+      <button
+        onClick={() =>
+          request(
+            'https://ranekapis.origamid.dev/json/api/produto/smartphone',
+            {},
+          )
+        }
+        style={{ marginRight: '16px' }}
+      >
+        Smartphone
       </button>
-      <button onClick={cleanApi}>Limpar infos</button>
-      {!!Object.keys(produto).length && (
-        <div>
-          <h1>{produto.nome}</h1>
-          <p>{real(produto.preco)}</p>
-          <img
-            src={produto.fotos[0].src}
-            alt={produto.fotos[0].titulo}
-            key={produto.fotos[0].src}
-          />
-        </div>
+      <button
+        onClick={() =>
+          request('https://ranekapi.origamid.dev/json/api/produto/tablet', {})
+        }
+        style={{ marginRight: '16px' }}
+      >
+        Tablet
+      </button>
+      <button onClick={() => setData({})}>Limpar API</button>
+      {Object.keys(error).length ? (
+        <div>erro</div>
+      ) : loading ? (
+        <div>Carregando</div>
+      ) : (
+        !loading &&
+        !!Object.keys(data).length && (
+          <div>
+            <h1>{data.nome}</h1>
+            <p>{real(data.preco)}</p>
+            <img
+              src={data.fotos[0].src}
+              alt={data.fotos[0].titulo}
+              key={data.fotos[0].src}
+            />
+          </div>
+        )
       )}
     </div>
   );
