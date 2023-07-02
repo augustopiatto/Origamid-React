@@ -1,65 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const formInicial = {
-  nome: '',
-  email: '',
-  senha: '',
-  cep: '',
-  rua: '',
-  numero: '',
-  bairro: '',
-  cidade: '',
-  estado: '',
-};
+const coresArray = ['azul', 'roxo', 'laranja', 'verde', 'vermelho', 'cinza'];
 
 const App = () => {
-  const [form, setForm] = React.useState(formInicial);
-  const changeForm = ({ target }) => {
-    const { id, value } = target;
-    setForm({ ...form, [id]: value });
+  // Otimize o código do slide anterior
+  // Utilizando a array abaixo para mostrar
+  // cada checkbox na tela.
+
+  const [cores, setCores] = useState(['azul', 'roxo']);
+
+  const handleChange = ({ target }) => {
+    if (target.checked) {
+      setCores([...cores, target.value]);
+    } else {
+      setCores(cores.filter((cor) => cor !== target.value));
+    }
   };
 
-  const postApi = async (event) => {
-    event.preventDefault();
-    const response = await fetch(
-      'https://ranekapi.origamid.dev/json/api/usuario',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      },
-    );
-    if (response.status !== 200) {
-      window.alert('Erro');
-      return;
-    }
-    const json = await response.json();
-    setForm(formInicial);
-    window.alert('Cadastro com sucesso!');
+  const handleChecked = (cor) => {
+    return cores.includes(cor);
   };
 
   return (
     <>
-      <form onSubmit={postApi}>
-        {Object.keys(form).map((key, index) => {
-          return (
-            <div key={key}>
-              <label htmlFor={key}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </label>
-              <input
-                id={key}
-                type="text"
-                value={form[key]}
-                onChange={changeForm}
-              />
-            </div>
-          );
-        })}
-        <button>Enviar</button>
-      </form>
+      {coresArray.map((cor) => {
+        return (
+          <label key={cor} style={{ textTransform: 'capitalize' }}>
+            <input
+              type="checkbox"
+              value={cor}
+              checked={handleChecked(cor)}
+              onChange={handleChange}
+            />
+            {cor}
+          </label>
+        );
+      })}
     </>
   );
 };
