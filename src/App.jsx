@@ -1,42 +1,93 @@
 import React, { useState } from 'react';
+import Pergunta from './Pergunta.jsx';
 
-const coresArray = ['azul', 'roxo', 'laranja', 'verde', 'vermelho', 'cinza'];
+const perguntas = [
+  {
+    pergunta: 'Qual método é utilizado para criar componentes?',
+    options: [
+      'React.makeComponent()',
+      'React.createComponent()',
+      'React.createElement()',
+    ],
+    resposta: 'React.createElement()',
+    id: 'p1',
+  },
+  {
+    pergunta: 'Como importamos um componente externo?',
+    options: [
+      'import Component from "./Component"',
+      'require("./Component")',
+      'import "./Component"',
+    ],
+    resposta: 'import Component from "./Component"',
+    id: 'p2',
+  },
+  {
+    pergunta: 'Qual hook não é nativo?',
+    options: ['useEffect()', 'useFetch()', 'useCallback()'],
+    resposta: 'useFetch()',
+    id: 'p3',
+  },
+  {
+    pergunta: 'Qual palavra deve ser utilizada para criarmos um hook?',
+    options: ['set', 'get', 'use'],
+    resposta: 'use',
+    id: 'p4',
+  },
+];
 
 const App = () => {
-  // Otimize o código do slide anterior
-  // Utilizando a array abaixo para mostrar
-  // cada checkbox na tela.
+  const [resultado, setResultado] = useState(0);
+  const [pagAtual, setPagAtual] = useState(0);
+  const [respostas, setRespostas] = useState({
+    p1: '',
+    p2: '',
+    p3: '',
+    p4: '',
+  });
 
-  const [cores, setCores] = useState(['azul', 'roxo']);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
-  const handleChange = ({ target }) => {
-    if (target.checked) {
-      setCores([...cores, target.value]);
+  const resultadoFinal = () => {
+    const resultado = perguntas.filter(
+      (pergunta) => pergunta.resposta === respostas[pergunta.id],
+    );
+    setResultado(`Você acertou: ${resultado.length} de ${perguntas.length}`);
+  };
+
+  const handleClick = () => {
+    if (pagAtual < perguntas.length - 1) {
+      setPagAtual(pagAtual + 1);
     } else {
-      setCores(cores.filter((cor) => cor !== target.value));
+      setPagAtual(pagAtual + 1);
+      resultadoFinal();
     }
   };
 
-  const handleChecked = (cor) => {
-    return cores.includes(cor);
-  };
-
   return (
-    <>
-      {coresArray.map((cor) => {
+    <form onSubmit={handleSubmit}>
+      {perguntas.map((pergunta, index) => {
         return (
-          <label key={cor} style={{ textTransform: 'capitalize' }}>
-            <input
-              type="checkbox"
-              value={cor}
-              checked={handleChecked(cor)}
-              onChange={handleChange}
-            />
-            {cor}
-          </label>
+          <div key={pergunta.id}>
+            {pagAtual === index && (
+              <fieldset>
+                <Pergunta
+                  pergunta={pergunta}
+                  respostas={respostas}
+                  setRespostas={setRespostas}
+                />
+                <button onClick={handleClick}>
+                  {index !== perguntas.length - 1 ? 'Próximo' : 'Confirmar'}
+                </button>
+              </fieldset>
+            )}
+          </div>
         );
       })}
-    </>
+      {!!resultado && <p>Resultado Final: {resultado}</p>}
+    </form>
   );
 };
 
