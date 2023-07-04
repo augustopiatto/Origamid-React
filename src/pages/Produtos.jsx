@@ -38,7 +38,7 @@ const Produtos = () => {
         produtos.map((produto) => {
           return (
             <Link
-              to={produto.id}
+              to={`produto/${produto.id}`}
               key={produto.id}
               className={`${styles.item} animation-left-right`}
             >
