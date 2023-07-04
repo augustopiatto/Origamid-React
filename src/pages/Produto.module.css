@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 24px;
+}
+
+.imagemContainer img {
+  margin: 8px;
+}
+
+.imagem {
+  max-width: 400px;
+  height: auto;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.produto span {
+  background-color: greenyellow;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.produto p {
+  font-size: 18px;
+}

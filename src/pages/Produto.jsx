@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../components/Loading.jsx';
+import styles from './Produto.module.css';
 
 const Produto = () => {
   const params = useParams();
@@ -34,20 +35,24 @@ const Produto = () => {
     <div>
       {loading && <Loading />}
       {!!Object.keys(produto).length && !loading && (
-        <div>
-          {produto.fotos.map((foto) => {
-            return (
-              <img
-                src={foto.src}
-                alt={foto.titulo}
-                key={foto.src}
-                className="imagem"
-              />
-            );
-          })}
-          <h1>{produto.nome}</h1>
-          <div>{produto.preco}</div>
-          <p>{produto.descricao}</p>
+        <div className={styles.container}>
+          <div className={styles.imagemContainer}>
+            {produto.fotos.map((foto) => {
+              return (
+                <img
+                  src={foto.src}
+                  alt={foto.titulo}
+                  key={foto.src}
+                  className={styles.imagem}
+                />
+              );
+            })}
+          </div>
+          <div className={styles.produto}>
+            <h1>{produto.nome}</h1>
+            <span>R$ {produto.preco}</span>
+            <p>{produto.descricao}</p>
+          </div>
         </div>
       )}
     </div>
