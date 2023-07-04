@@ -11,14 +11,18 @@ const Produto = () => {
   const listaProduto = async () => {
     setProduto({});
     setLoading(true);
+    let json = [];
     try {
       const response = await fetch(
         `https://ranekapi.origamid.dev/json/api/produto/${params.id}`,
       );
-      const json = await response.json();
+      json = await response.json();
       setProduto(json);
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setProduto(json);
+        setLoading(false);
+      }, 1000);
     }
   };
 

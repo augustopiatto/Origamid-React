@@ -18,14 +18,17 @@ const App = () => {
   const listaProdutos = async () => {
     setProdutos([]);
     setLoading(true);
+    let json = [];
     try {
       const response = await fetch(
         'https://ranekapi.origamid.dev/json/api/produto',
       );
-      const json = await response.json();
-      setProdutos(json);
+      json = await response.json();
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setProdutos(json);
+        setLoading(false);
+      }, 1000);
     }
   };
 
