@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../components/Loading.jsx';
 import styles from './Produto.module.css';
+import Head from '../components/Head.jsx';
 
 const Produto = () => {
   const params = useParams();
@@ -33,6 +34,7 @@ const Produto = () => {
 
   return (
     <div>
+      <Head title="React | Produto" description="Olha que produto bonito" />
       {loading && <Loading />}
       {!!Object.keys(produto).length && !loading && (
         <div className={`${styles.container} animation-left-right`}>

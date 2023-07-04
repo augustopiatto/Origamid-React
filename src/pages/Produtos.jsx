@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Produtos.module.css';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
+import Head from '../components/Head';
 
 const Produtos = () => {
   const [produtos, setProdutos] = React.useState([]);
@@ -30,6 +31,7 @@ const Produtos = () => {
 
   return (
     <div className={styles.container}>
+      <Head title="React | Produtos" description="Veja nossos produtos" />
       {loading && <Loading />}
       {!!produtos.length &&
         !loading &&

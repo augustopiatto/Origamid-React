@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './Contato.module.css';
 import imagem from '../assets/imagem.jpg';
+import Head from '../components/Head';
 
 const Contato = () => {
   return (
     <div className={`${styles.container} animation-left-right`}>
+      <Head title="React | Contato" description="Entre em contato" />
       <img src={imagem} alt="contato" className={styles.imagem} />
       <div>
         <h1>Entre em contato</h1>
