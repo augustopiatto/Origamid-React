@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Loading from './Loading.jsx';
+import Loading from '../components/Loading.jsx';
 
 const Produto = () => {
   const params = useParams();

@@ -1,9 +1,9 @@
 import React from 'react';
-import Produtos from './Produtos';
-import Produto from './Produto';
-import Contato from './Contato';
-import Loading from './Contato';
-import './App.css';
+import Produtos from './pages/Produtos';
+import Produto from './pages/Produto';
+import Contato from './pages/Contato';
+import Loading from './components/Loading';
+import styles from './App.module.css';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
 const App = () => {
@@ -35,12 +35,12 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="body">
-        <div className="buttons-container">
-          <NavLink to="/" onClick={listaProdutos} className="button">
+      <div className={styles.body}>
+        <div className={styles.buttonsContainer}>
+          <NavLink to="/" onClick={listaProdutos} className={styles.button}>
             Produtos
           </NavLink>
-          <NavLink to="/contato" className="button">
+          <NavLink to="/contato" className={styles.button}>
             Contato
           </NavLink>
         </div>

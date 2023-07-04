@@ -1,9 +1,10 @@
 .body {
   max-width: 800px;
   margin: 0 auto;
+  height: 101vh;
 }
 
-.buttons-container {
+.buttonsContainer {
   margin: 24px 0;
 }
 
