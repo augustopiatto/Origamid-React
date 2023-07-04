@@ -41,7 +41,10 @@ const Produto = () => {
   if (!!Object.keys(produto).length && !loading && !error)
     return (
       <div>
-        <Head title="React | Produto" description="Olha que produto bonito" />
+        <Head
+          title={`React | ${produto.nome}`}
+          description={`Olha que ${produto.nome} bonito`}
+        />
         <div className={`${styles.container} animation-left-right`}>
           <div className={styles.imagemContainer}>
             {produto.fotos.map((foto) => {
@@ -61,7 +64,6 @@ const Produto = () => {
             <p>{produto.descricao}</p>
           </div>
         </div>
-        )
       </div>
     );
 };

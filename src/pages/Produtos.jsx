@@ -31,7 +31,7 @@ const Produtos = () => {
 
   return (
     <div className={styles.container}>
-      <Head title="React | Produtos" description="Veja nossos produtos" />
+      <Head title="React" description="Veja nossos produtos" />
       {loading && <Loading />}
       {!!produtos.length &&
         !loading &&
