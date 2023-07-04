@@ -35,7 +35,11 @@ const Produtos = () => {
         !loading &&
         produtos.map((produto) => {
           return (
-            <Link to={produto.id} key={produto.id} className={styles.item}>
+            <Link
+              to={produto.id}
+              key={produto.id}
+              className={`${styles.item} animation-left-right`}
+            >
               <img
                 src={produto.fotos[0].src}
                 alt={produto.fotos[0].titulo}

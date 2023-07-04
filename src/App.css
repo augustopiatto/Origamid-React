@@ -24,3 +24,16 @@
 .active {
   background-color: rgb(150, 150, 150);
 }
+
+.animation-left-right {
+  transform: translateX(-100px);
+  opacity: 0;
+  animation: animationLeftRight 0.5s forwards;
+}
+
+@keyframes animationLeftRight {
+  to {
+    transform: initial;
+    opacity: initial;
+  }
+}

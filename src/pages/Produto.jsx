@@ -35,7 +35,7 @@ const Produto = () => {
     <div>
       {loading && <Loading />}
       {!!Object.keys(produto).length && !loading && (
-        <div className={styles.container}>
+        <div className={`${styles.container} animation-left-right`}>
           <div className={styles.imagemContainer}>
             {produto.fotos.map((foto) => {
               return (

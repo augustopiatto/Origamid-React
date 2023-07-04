@@ -4,7 +4,7 @@ import imagem from '../assets/imagem.jpg';
 
 const Contato = () => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} animation-left-right`}>
       <img src={imagem} alt="contato" className={styles.imagem} />
       <div>
         <h1>Entre em contato</h1>
