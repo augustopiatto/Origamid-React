@@ -1,8 +1,10 @@
 import React from 'react';
 import Produtos from './Produtos';
+import Produto from './Produto';
 import Contato from './Contato';
 import Loading from './Contato';
 import './App.css';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
 const App = () => {
   // Utilize a API abaixo para puxar a lista de produto
@@ -27,16 +29,34 @@ const App = () => {
     }
   };
 
+  React.useEffect(() => {
+    listaProdutos();
+  }, []);
+
   return (
-    <div className="body">
-      <button onClick={listaProdutos} className="button">
-        Produtos
-      </button>
-      <button className="button">Contato</button>
-      {loading && <Loading />}
-      {!!produtos.length && !loading && <Produtos produtos={produtos} />}
-      <Contato />
-    </div>
+    <BrowserRouter>
+      <div className="body">
+        <div className="buttons-container">
+          <NavLink to="/" onClick={listaProdutos} className="button">
+            Produtos
+          </NavLink>
+          <NavLink to="/contato" className="button">
+            Contato
+          </NavLink>
+        </div>
+        {loading && <Loading />}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              !!produtos.length && !loading && <Produtos produtos={produtos} />
+            }
+          />
+          <Route path="/contato" element={<Contato />} />
+          <Route path="/:id" element={<Produto />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 
