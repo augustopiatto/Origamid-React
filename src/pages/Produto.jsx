@@ -5,10 +5,11 @@ import styles from './Produto.module.css';
 import Head from '../components/Head.jsx';
 
 const Produto = () => {
-  const params = useParams();
+  const { id } = useParams();
 
   const [produto, setProduto] = React.useState({});
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState('');
 
   const listaProduto = async () => {
     setProduto({});
@@ -16,8 +17,11 @@ const Produto = () => {
     let json = [];
     try {
       const response = await fetch(
-        `https://ranekapi.origamid.dev/json/api/produto/${params.id}`,
+        `https://ranekapi.origamid.dev/json/api/produto/${id}`,
       );
+      if (response.status !== 200) {
+        setError('Error');
+      }
       json = await response.json();
       setProduto(json);
     } finally {
@@ -30,13 +34,14 @@ const Produto = () => {
 
   React.useEffect(() => {
     listaProduto();
-  }, []);
+  }, [id]);
 
-  return (
-    <div>
-      <Head title="React | Produto" description="Olha que produto bonito" />
-      {loading && <Loading />}
-      {!!Object.keys(produto).length && !loading && (
+  if (loading) return <Loading />;
+  if (error) return <p>{error}</p>;
+  if (!!Object.keys(produto).length && !loading && !error)
+    return (
+      <div>
+        <Head title="React | Produto" description="Olha que produto bonito" />
         <div className={`${styles.container} animation-left-right`}>
           <div className={styles.imagemContainer}>
             {produto.fotos.map((foto) => {
@@ -56,9 +61,9 @@ const Produto = () => {
             <p>{produto.descricao}</p>
           </div>
         </div>
-      )}
-    </div>
-  );
+        )
+      </div>
+    );
 };
 
 export default Produto;
