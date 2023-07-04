@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+}
+
+.imagem {
+  max-width: 300px;
+  height: auto;
+  width: auto;
+  border-radius: 16px
+}

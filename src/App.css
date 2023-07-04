@@ -1,0 +1,14 @@
+.body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.button {
+  width: 100px;
+  padding: 8px;
+  background-color: gray;
+  border: None;
+  border-radius: 4px;
+  font-size: 18px;
+  margin: 16px 16px 16px 0;
+}
