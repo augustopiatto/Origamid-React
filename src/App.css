@@ -4,7 +4,7 @@
   height: 101vh;
 }
 
-.buttonsContainer {
+.buttons-container {
   margin: 24px 0;
 }
 
@@ -20,7 +20,7 @@
   color: white;
 }
 
-:global(.active),
-.button:hover {
+.button:hover,
+.active {
   background-color: rgb(150, 150, 150);
 }
