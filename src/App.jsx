@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Login from "./pages/login/Login.jsx";
 import Home from "./pages/Home.jsx";
+import "./App.css";
 
 const App = () => {
   return (
