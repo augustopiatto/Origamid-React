@@ -1,39 +1,45 @@
-.body {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  color: #333;
+  --type-first: Helvetica, Arial, sans-serif;
+  --type-second: "Spectral", Georgia;
+  font-family: var(--type-first);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0px;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  display: block;
+  font-size: 16px;
+  font-family: var(--type-first);
+  color: #333;
+}
+
+.container {
   max-width: 800px;
+  padding: 0 16px;
   margin: 0 auto;
-  height: 101vh;
-}
-
-.buttons-container {
-  margin: 24px 0;
-}
-
-.button {
-  padding: 8px;
-  background-color: rgb(200, 200, 200);
-  border: None;
-  border-radius: 4px;
-  font-size: 24px;
-  cursor: pointer;
-  margin-right: 24px;
-  text-decoration: none;
-  color: white;
-}
-
-.button:hover,
-.active {
-  background-color: rgb(150, 150, 150);
-}
-
-.animation-left-right {
-  transform: translateX(-100px);
-  opacity: 0;
-  animation: animationLeftRight 0.5s forwards;
-}
-
-@keyframes animationLeftRight {
-  to {
-    transform: initial;
-    opacity: initial;
-  }
 }
