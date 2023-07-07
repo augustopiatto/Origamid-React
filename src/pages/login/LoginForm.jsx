@@ -1,43 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Input from "../../components/html_components/Input";
+import Button from "../../components/html_components/Button";
+import useForm from "../../hooks/useForm";
 
 const LoginForm = () => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const username = useForm();
+  const password = useForm();
 
   const enviarForm = async (event) => {
     event.preventDefault();
-    console.log(JSON.stringify({ username, password }));
-    const response = await fetch(
-      "https://dogsapi.origamid.dev/json/jwt-auth/v1/token",
-      {
-        method: "POST",
-        header: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }
-    );
-    const json = await response.json();
+    if (username.validate() && password.validate()) {
+      const response = await fetch(
+        "https://dogsapi.origamid.dev/json/jwt-auth/v1/token",
+        {
+          method: "POST",
+          header: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
+      const json = await response.json();
+    }
   };
 
   return (
     <section>
       <h1>Login</h1>
       <form action="" onSubmit={enviarForm}>
-        <input
-          type="text"
-          value={username}
-          onChange={({ target }) => setUsername(target.value)}
-        />
-        <input
-          type="text"
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
-        />
-        <button>Entrar</button>
-        <Link to="/login/criar">Cadastro</Link>
+        <Input label="Username" name="username" type="text" {...username} />
+        <Input label="Senha" name="password" type="password" {...password} />
+        <Button>Entrar</Button>
       </form>
+      <Link to="/login/criar">Cadastro</Link>
     </section>
   );
 };
