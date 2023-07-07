@@ -5,17 +5,20 @@ import Footer from "./components/Footer.jsx";
 import Login from "./pages/login/Login.jsx";
 import Home from "./pages/Home.jsx";
 import "./App.css";
+import { UserStorage } from "./contexts/UserContext.jsx";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login/*" element={<Login />} />
-        </Routes>
-        <Footer />
+        <UserStorage>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login/*" element={<Login />} />
+          </Routes>
+          <Footer />
+        </UserStorage>
       </BrowserRouter>
     </div>
   );
