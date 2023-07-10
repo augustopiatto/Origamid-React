@@ -1,2 +1,17 @@
 .modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  z-index: 1000;
+  padding: 32px calc(64px + 15px /** largura barra */) 32px 64px;
+}
+
+@media (max-width: 800px) {
+  .modal {
+    padding: 32px calc(32px + 15px /** largura barra */) 32px 32px;
+  }
 }
