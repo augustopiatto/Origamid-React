@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import LoginForm from "./LoginForm.jsx";
-import LoginCreate from "./LoginCreate.jsx";
-import LoginPasswordLost from "./LoginPasswordLost.jsx";
-import LoginPasswordReset from "./LoginPasswordReset.jsx";
-import { UserContext } from "../../contexts/UserContext.jsx";
+import LoginForm from "../components/login/LoginForm.jsx";
+import LoginCreate from "../components/login/LoginCreate.jsx";
+import LoginPasswordLost from "../components/login/LoginPasswordLost.jsx";
+import LoginPasswordReset from "../components/login/LoginPasswordReset.jsx";
+import { UserContext } from "../contexts/UserContext.jsx";
 import styles from "./Login.module.css";
 
 const Login = () => {

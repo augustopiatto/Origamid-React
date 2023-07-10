@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import Login from "./pages/login/Login.jsx";
+import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
 import "./App.css";
 import { UserStorage } from "./contexts/UserContext.jsx";
-import User from "./pages/user/User.jsx";
+import User from "./components/user/User.jsx";
 import ProtectedRoute from "./helpers/ProtectedRoute.jsx";
 
 const App = () => {

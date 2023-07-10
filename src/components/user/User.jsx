@@ -1,8 +1,8 @@
 import React from "react";
 import UserHeader from "./UserHeader";
-import Feed from "../Feed/Feed";
+import Feed from "../../pages/Feed";
 import { Route, Routes } from "react-router-dom";
-import UserPhotoPost from "./UserPhotoPost";
+import UserPhotoPost from "../../pages/UserPhotoPost";
 import UserStats from "./UserStats";
 import { UserContext } from "../../contexts/UserContext";
 

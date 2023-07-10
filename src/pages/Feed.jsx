@@ -1,6 +1,6 @@
 import React from "react";
-import FeedModal from "./FeedModal.jsx";
-import FeedPhotos from "./FeedPhotos.jsx";
+import FeedModal from "../components/feed/FeedModal.jsx";
+import FeedPhotos from "../components/feed/FeedPhotos.jsx";
 
 const Feed = ({ user }) => {
   const [modalPhoto, setModalPhoto] = React.useState(null);

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./UserPhotoPost.module.css";
-import useForm from "../../hooks/useForm.jsx";
-import useFetch from "../../hooks/useFetch.jsx";
-import Input from "../../components/html_components/Input.jsx";
-import Button from "../../components/html_components/Button.jsx";
-import Error from "../../helpers/Error.jsx";
-import { PHOTO_POST } from "../../api";
+import useForm from "../hooks/useForm.jsx";
+import useFetch from "../hooks/useFetch.jsx";
+import Input from "../components/html_components/Input.jsx";
+import Button from "../components/html_components/Button.jsx";
+import Error from "../helpers/Error.jsx";
+import { PHOTO_POST } from "../api";
 import { useNavigate } from "react-router-dom";
 
 const UserPhotoPost = () => {
