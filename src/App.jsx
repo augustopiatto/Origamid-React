@@ -10,6 +10,7 @@ import { UserStorage } from "./contexts/UserContext.jsx";
 import User from "./components/user/User.jsx";
 import ProtectedRoute from "./helpers/ProtectedRoute.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             />
             <Route path="foto/:id" element={<Photo />} />
             <Route path="perfil/:user" element={<UserProfile />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </UserStorage>
