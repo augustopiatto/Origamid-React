@@ -19,7 +19,7 @@ const FeedPhotos = ({ setModalPhoto }) => {
 
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
-  if (data)
+  if (!loading && data)
     return (
       <ul className={`${styles.feed} animeLeft`}>
         {data.map((photo) => (
