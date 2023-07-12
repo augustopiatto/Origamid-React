@@ -17,7 +17,7 @@ const LoginPasswordLost = () => {
         login: login.value,
         url: window.location.href.replace("perder", "resetar"),
       });
-      const { json } = await request(url, options);
+      await request(url, options);
     }
   };
 
@@ -30,13 +30,13 @@ const LoginPasswordLost = () => {
         <form onSubmit={handleSubmit}>
           <Input label="Email / Usuário" type="text" name="login" {...login} />
           {loading ? (
-            <Button disabled>Enviando</Button>
+            <Button disabled>Enviando...</Button>
           ) : (
             <Button>Enviar E-mail</Button>
           )}
         </form>
       )}
-      {error && <Error error={error} />}
+      <Error error={error} />
     </section>
   );
 };
