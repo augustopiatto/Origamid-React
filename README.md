@@ -46,10 +46,10 @@ O projeto possui as seguintes funcionalidades:
 - Hooks
 - React Router
 - useContext
-- CSS Modules
 - PropTypes
 - Componentes Funcionais
 - Eventos
+- CSS Modules (visualização mobile inclusa)
 
 ## Scripts
 O projeto inclui os seguintes scripts:
