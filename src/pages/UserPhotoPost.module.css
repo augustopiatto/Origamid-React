@@ -5,6 +5,12 @@
   margin-bottom: 32px;
 }
 
+@media (max-width: 800px) {
+  .photoPost {
+    grid-template-columns: 1fr;
+  }
+}
+
 .file {
   margin-bottom: 16px;
 }
