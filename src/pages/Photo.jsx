@@ -5,10 +5,10 @@ import Error from "../helpers/Error";
 import Loading from "../helpers/Loading";
 import PhotoContent from "../components/photo/PhotoContent";
 import { PHOTO_GET } from "../api";
+import Head from "../helpers/Head";
 
 const Photo = () => {
   const { id } = useParams();
-
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -21,6 +21,7 @@ const Photo = () => {
   if (!loading && data)
     return (
       <section className="container mainContainer">
+        <Head title={data.photo.title} />
         <PhotoContent single={true} data={data} />
       </section>
     );
