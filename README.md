@@ -23,7 +23,6 @@ O projeto é uma rede social para cachorros, permitindo ao usuário portar fotos
 #### Cadastro
 ![Cadastro](https://github.com/augustopiatto/Origamid-React/assets/77405968/dac5ee4f-f6db-4a67-8568-416deabbf80f)
 
-
 ## Começando
 Para iniciar o projeto, siga os passos abaixo:
 
